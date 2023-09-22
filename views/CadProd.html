@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+    
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e591c3fa;
+        }
+
+        .form-container {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            background-color: #cfe3e9;
+        }
+        
+       
+	
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h3 class="text-center"><img src="../logofundo.png">Cadastrar Produto no Estoque</h3>
+        <form>
+            <div class="form-group">
+                <label for="inputNome">Nome do Produto:</label>
+                <input type="text" class="form-control" id="inputNome" placeholder="Digite o nome do produto" required>
+            </div>
+            <div class="form-group">
+                <label for="inputDescricao">Descrição:</label>
+                <textarea class="form-control" id="inputDescricao" placeholder="Descreva o produto"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="inputQuantidade">Quantidade:</label>
+                <input type="number" class="form-control" id="inputQuantidade" placeholder="Digite a quantidade" required>
+            </div>
+            <div class="form-group">
+                <label for="inputPreco">Preço:</label>
+                <input type="number" class="form-control" id="inputPreco" placeholder="Digite o preço" required>
+            </div>
+            <a href="principal.html" class="btn btn-info btn-lg-button">Voltar</a>
+            <a href="CadProdTrue.html" class="btn btn-info btn-lg-button">Cadastrar produto</a>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
