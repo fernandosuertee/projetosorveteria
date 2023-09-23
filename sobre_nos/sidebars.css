@@ -1,0 +1,90 @@
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+main {
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.dropdown-toggle { outline: 0; }
+
+.btn-toggle {
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: var(--bs-emphasis-color);
+  background-color: transparent;
+}
+.btn-toggle:hover,
+.btn-toggle:focus {
+  color: rgba(var(--bs-emphasis-color-rgb), .85);
+  background-color: var(--bs-tertiary-bg);
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+[data-bs-theme="dark"] .btn-toggle::before {
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%28255,255,255,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+}
+
+.btn-toggle[aria-expanded="true"] {
+  color: rgba(var(--bs-emphasis-color-rgb), .85);
+}
+.btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.btn-toggle-nav a {
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-left: 1.25rem;
+}
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+  background-color: var(--bs-tertiary-bg);
+}
+
+.scrollarea {
+  overflow-y: auto;
+}
+
+/* Estilos para a barra lateral */
+.sidebar {
+  width: 4.5rem; /* Largura da barra lateral */
+  background-color: #f577b6; /* Cor de fundo da barra lateral */
+  position: fixed; /* Fixa a barra lateral na posição */
+  top: 0; /* Alinha a barra lateral ao topo da página */
+  bottom: 0; /* Alinha a barra lateral à parte inferior da página */
+  left: 0; /* Alinha a barra lateral à lateral esquerda da página */
+  z-index: 1000; /* Define uma elevada camada de empilhamento */
+  overflow-y: auto; /* Adiciona rolagem vertical à barra lateral, se necessário */
+  padding-top: 20px; /* Espaçamento superior para o conteúdo da barra lateral */
+}
+
+/* Estilos para os ícones na barra lateral */
+.sidebar a {
+  color: #fff; /* Cor do texto dos ícones */
+  text-align: center; /* Alinha o texto ao centro */
+  padding: 10px; /* Espaçamento interno para os ícones */
+  text-decoration: none; /* Remove a decoração de texto dos links */
+  display: block; /* Transforma os links em blocos para ocupar toda a largura da barra lateral */
+}
+
+/* Estilos para os ícones ativos na barra lateral */
+.sidebar a.active {
+  background-color: #6528e0; /* Cor de fundo dos ícones ativos */
+}
