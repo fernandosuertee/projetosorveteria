@@ -7,26 +7,50 @@
 	<title>Login Administrativo</title>
 	<link rel="stylesheet" type="text/css" href="views/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="views/css/estilo.css">
+
+	<script>
+		// Defina credenciais de login (substitua estas por credenciais reais)
+        const credenciais = {
+            login: "admin",
+            senha: "senha123"
+        };
+
+        function fazerLogin() {
+            const loginInput = document.getElementById("exampleInputEmail1");
+            const senhaInput = document.getElementById("exampleInputPassword1");
+
+            const login = loginInput.value;
+            const senha = senhaInput.value;
+
+            if (login === credenciais.login && senha === credenciais.senha) {
+                alert("Login bem-sucedido. Redirecionando para a página administrativa...");
+                window.location.href = "views/principal.html"; // altera para pagina login bem sucedido
+            } else {
+                alert("Credenciais inválidas. Tente novamente.");
+                senhaInput.value = "";
+            }
+
+            
+        }
+	</script>
 </head>
 <body class="bg-login">	
 	<div class="container-fluid">	
 		<div class="row col-md-12">
 			<div class="col-md-4"></div>
 			<div class="col-md-4 login">
-				<h2 class="text-center text-dark"> <img src="../views/img/logofundo.png">Administrativo</h2>
-				<form>
+				<h2 class="text-center text-dark"> <img src="views/img/logofundo.png">Administrativo</h2>
+				<form onsubmit="fazerLogin(); return false;" action="views/principal.html">
 				  	<div class="mb-3">
 				    	<label for="exampleInputEmail1" class="form-label">login</label>
-				    	<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-				    <div id="emailHelp" class="form-text"></div>
+				    	<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+				    <div id="emailHelp" class="form-text"  ></div>
 					</div>
 					<div class="mb-3">
 				    	<label for="exampleInputPassword1" class="form-label">Senha</label>
-				    	<input type="password" class="form-control" id="exampleInputPassword1">
+				    	<input type="password" class="form-control" id="exampleInputPassword1" required="exampleInputPassword1">
 					</div>
-					<div class="d-grid gap-2">
-						<a href="views/principal.html" class="btn btn-info btn-lg">Acessar Ambiente</a>
-					</div>
+					<button type="submit" class="btn btn-info btn-lg-button"> Enviar </button>
 				</form>
 			</div>
 			<div class="col-md-4"></div>
