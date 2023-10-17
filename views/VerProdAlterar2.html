@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar Produto</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- valida quantidade produto cadastro -->
+    <script>
+        function validarQuantidade(input) {
+            const valor = input.value;
+    
+            // Remove espaços em branco do início e do fim
+            const valorSemEspacos = valor.trim();
+    
+            // Verifica se o valor é um número positivo
+            if (!isNaN(valorSemEspacos) && parseFloat(valorSemEspacos) >= 0) {
+                // Valor é um número positivo, mantém o valor no campo.
+                input.value = valorSemEspacos;
+            } else {
+                // Valor não é válido, limpa o campo.
+                input.value = "";
+            }
+        }
+    </script>
+    
+    <!-- valida valor digitado -->
+    <script>
+        function formatarValor(input) {
+            let valor = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos.
+            valor = (parseFloat(valor) / 100).toFixed(2); // Divide por 100 e formata com duas casas decimais.
+            input.value = `R$ ${valor}`; // Adiciona "R$" antes do valor formatado.
+        }
+    </script>
+
     <style>
         body {
             display: flex;
@@ -43,12 +72,12 @@
     <div class="form-container">
         <h3 class="text-center">Alterar Produto</h3>
         <div style="text-align: center;">
-            <img src="../sorvete-removebg-preview.png" style="max-width: 200%; height: auto;">
+            <img src="../views/img/sorvete-removebg-preview.png" style="max-width: 200%; height: auto;">
         </div>
-        <form>
+        <form action="VerProdAlterarTrue.html">
             <div class="form-group">
                 <label for="inputNome">Nome do Produto:</label>
-                <input type="text" class="form-control" id="inputNome" placeholder="Digite o novo nome">
+                <input type="text" class="form-control" id="inputNome" placeholder="Digite o nome do produto" required>
             </div>
             <div class="form-group">
                 <label for="inputDescricao">Descrição:</label>
@@ -56,15 +85,13 @@
             </div>
             <div class="form-group">
                 <label for="inputPreco">Preço:</label>
-                <input type="text" class="form-control" id="inputPreco" placeholder="Digite o novo preço">
-            </div>
+                <input type="text" class="form-control" id="inputValor" placeholder="Digite o preço" required oninput="formatarValor(this)">            </div>
             <div class="form-group">
                 <label for="inputQuantidade">Quantidade em Estoque:</label>
-                <input type="text" class="form-control" id="inputQuantidade" placeholder="Digite a nova quantidade em estoque">
-            </div>
+                <input type="number" class="form-control" id="inputQuantidade" placeholder="Digite a quantidade" equired oninput="validarQuantidade(this)">            </div>
             <div class="d-grid gap-2">
-                <a href="VerProdAlterarTrue.html"class="btn btn-button btn-block mt-3">Salvar Alterações</button>
-                <a href="VerProd.html" class="btn btn-secondary btn-block mt-3">Cancelar</a>
+                <button type="submit" class="btn btn-button btn-block mt-3">Salvar Alterações</button>
+                <button type="button" onclick="location.href='VerProd.html'" class="btn btn-secondary btn-block mt-3">Cancelar</button>
             </div>
         </form>
     </div>

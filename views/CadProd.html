@@ -8,6 +8,64 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/estilo.css">
     
+    <!-- valida quantidade produto cadastro -->
+    <script>
+    function validarQuantidade(input) {
+        const valor = input.value;
+
+        // Remove espaços em branco do início e do fim
+        const valorSemEspacos = valor.trim();
+
+        // Verifica se o valor é um número positivo
+        if (!isNaN(valorSemEspacos) && parseFloat(valorSemEspacos) >= 0) {
+            // Valor é um número positivo, mantém o valor no campo.
+            input.value = valorSemEspacos;
+        } else {
+            // Valor não é válido, limpa o campo.
+            input.value = "";
+        }
+    }
+    </script>
+
+    <!-- valida valor digitado -->
+    <script>
+    function formatarValor(input) {
+        let valor = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos.
+        valor = (parseFloat(valor) / 100).toFixed(2); // Divide por 100 e formata com duas casas decimais.
+        input.value = `R$ ${valor}`; // Adiciona "R$" antes do valor formatado.
+    }
+    </script>
+
+    <!-- armazena o produto cadastrado na memoria -->
+    <script>
+        const produtos = [];
+    
+        function cadastrarProduto() {
+            const nome = document.getElementById("inputNome").value;
+            const descricao = document.getElementById("inputDescricao").value;
+            const quantidade = parseFloat(document.getElementById("inputQuantidade").value);
+            const valor = parseFloat(document.getElementById("inputValor").value.replace(/[^0-9.]/g, ''));
+    
+            if (nome && descricao && !isNaN(quantidade) && quantidade >= 0 && !isNaN(valor) && valor >= 0) {
+                const produto = { nome, descricao, quantidade, valor };
+                produtos.push(produto);
+                alert("Produto cadastrado com sucesso!");
+                document.getElementById("inputNome").value = "";
+                document.getElementById("inputDescricao").value = "";
+                document.getElementById("inputQuantidade").value = "";
+                document.getElementById("inputValor").value = "";
+            } else {
+                alert("Preencha os campos corretamente.");
+            }
+        }
+    
+        function irParaVisualizacao() {
+            localStorage.setItem("produtos", JSON.stringify(produtos));
+            window.location.href = "VerProdvisualizar.html";
+        }
+    </script>
+    
+
     <style>
         body {
             display: flex;
@@ -32,8 +90,8 @@
 </head>
 <body>
     <div class="form-container">
-        <h3 class="text-center"><img src="../logofundo.png">Cadastrar Produto no Estoque</h3>
-        <form>
+        <h3 class="text-center"><img src="../views/img/logofundo.png">Cadastrar Produto no Estoque</h3>
+        <form action="CadProdTrue.html" onsubmit="return cadastrarProduto()">
             <div class="form-group">
                 <label for="inputNome">Nome do Produto:</label>
                 <input type="text" class="form-control" id="inputNome" placeholder="Digite o nome do produto" required>
@@ -44,14 +102,14 @@
             </div>
             <div class="form-group">
                 <label for="inputQuantidade">Quantidade:</label>
-                <input type="number" class="form-control" id="inputQuantidade" placeholder="Digite a quantidade" required>
+                <input type="number" class="form-control" id="inputQuantidade" placeholder="Digite a quantidade" equired oninput="validarQuantidade(this)">
             </div>
             <div class="form-group">
-                <label for="inputPreco">Preço:</label>
-                <input type="number" class="form-control" id="inputPreco" placeholder="Digite o preço" required>
+                <label for="inputValor">Preço:</label>
+                <input type="text" class="form-control" id="inputValor" placeholder="Digite o preço" required oninput="formatarValor(this)">
             </div>
-            <a href="principal.html" class="btn btn-info btn-lg-button">Voltar</a>
-            <a href="CadProdTrue.html" class="btn btn-info btn-lg-button">Cadastrar produto</a>
+            <button type="submit" class="btn btn-info btn-lg-button" > Cadastrar produto</button>
+            <button type="button" onclick="location.href='principal.html'" class="btn btn-info btn-lg-button"> Inicio</button> 
         </form>
     </div>
 

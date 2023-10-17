@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizar Produto</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- mostra produto cadastrado  -->
+    <script>
+        const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+    
+        function exibirProdutos() {
+            const listaProdutos = document.getElementById("listaProdutos");
+    
+            for (const produto of produtos) {
+                const listItem = document.createElement("li");
+                listItem.textContent = `
+                    Nome: ${produto.nome}
+                    Descrição: ${produto.descricao}
+                    Quantidade: ${produto.quantidade}
+                    Preço: R$ ${produto.valor.toFixed(2)}
+                `;
+                listaProdutos.appendChild(listItem);
+            }
+        }
+    </script>
+    
+
     <style>
         body {
             display: flex;
@@ -43,7 +65,7 @@
     <div class="form-container">
         <h3 class="text-center">Detalhes do Produto</h3>
         <div style="text-align: center;">
-            <img src="../sorvete-removebg-preview.png" style="max-width: 200%; height: auto;">
+            <img src="../views/img/sorvete-removebg-preview.png" style="max-width: 200%; height: auto;">
         </div>
         <form>
             <div class="form-group">
@@ -55,12 +77,12 @@
             </div>
             </div>
             <div class="d-grid gap-2">
-                <a href="VerProd.html" class="btn btn-button btn-block mt-3">Voltar</a>
-                <a href="principal.html" class="btn btn-button btn-block mt-3">Home</a>
-              </div>
+                <button type="button" onclick="location.href='VerProd.html'" class="btn btn-button btn-block mt-3">Voltar</button>
+                <button type="button" onclick="location.href='principal.html'" class="btn btn-button btn-block mt-3">Home</button>
+            </div>
         </form>
     </div>
-
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
