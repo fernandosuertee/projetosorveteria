@@ -5,8 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<title>Login Administrativo</title>
-	<link rel="stylesheet" type="text/css" href="views/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="views/css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
 
 	<script>
 		// Defina credenciais de login (substitua estas por credenciais reais)
@@ -24,7 +24,7 @@
 
             if (login === credenciais.login && senha === credenciais.senha) {
                 alert("Login bem-sucedido. Redirecionando para a página administrativa...");
-                window.location.href = "views/principal.html"; // altera para pagina login bem sucedido
+                window.location.href = "principal.html"; // altera para pagina login bem sucedido
             } else {
                 alert("Credenciais inválidas. Tente novamente.");
                 senhaInput.value = "";
@@ -39,8 +39,8 @@
 		<div class="row col-md-12">
 			<div class="col-md-4"></div>
 			<div class="col-md-4 login">
-				<h2 class="text-center text-dark"> <img src="views/img/logofundo.png">Administrativo</h2>
-				<form onsubmit="fazerLogin(); return false;" action="views/principal.html">
+				<h2 class="text-center text-dark"> <img src="img/logofundo.png">Administrativo</h2>
+				<form onsubmit="fazerLogin(); return false;" action="principal.html">
 				  	<div class="mb-3">
 				    	<label for="exampleInputEmail1" class="form-label">login</label>
 				    	<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
