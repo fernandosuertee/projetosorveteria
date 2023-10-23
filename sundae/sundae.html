@@ -145,6 +145,9 @@
       .custom-navbar-bg {
         background-color: #f577b6; /* Cor rosa-400 personalizada */
       }
+      .btn-enviar {
+        background-color: #f577b6; 
+      }
     </style>
 
     
@@ -267,11 +270,13 @@
             </div>
             <!-- Adicione uma classe personalizada para o card-body -->
             <div class="card-body custom-card-body">
-              <p class="card-text">Sorvete de morango</p>
+              <p class="card-text">Sundae de morango</p>
               <p class="card-body">Contem pedaços de morango</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Eu quero</button>
+                  <form action="">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"data-bs-toggle="modal" data-bs-target="#modalEuQuero">Eu quero</button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -284,11 +289,13 @@
             </div>
             <!-- Adicione uma classe personalizada para o card-body -->
             <div class="card-body custom-card-body">
-              <p class="card-text">Sorvete de baunilha</p>
+              <p class="card-text">Sundae de baunilha</p>
               <p class="card-body">Delicioso sorvete de baunilha</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Eu quero</button>
+                  <form action="">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"data-bs-toggle="modal" data-bs-target="#modalEuQuero">Eu quero</button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -301,11 +308,13 @@
             </div>
             <!-- Adicione uma classe personalizada para o card-body -->
             <div class="card-body custom-card-body">
-              <p class="card-text">Sorvete de chocolate</p>
+              <p class="card-text">Sundae de chocolate</p>
               <p class="card-body">Contem pedaços de chocolate</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Eu quero</button>
+                  <form action="">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"data-bs-toggle="modal" data-bs-target="#modalEuQuero">Eu quero</button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -330,7 +339,91 @@
           </div>
         </div>
 -->
-      
+   <!-- Modal para "Eu quero" -->
+   <div class="modal fade" id="modalEuQuero" tabindex="-1" aria-labelledby="modalEuQueroLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEuQueroLabel">Adicionais</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Marque quais adicionais você deseja</p>
+          <form>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="adicional1" id="adicional1">
+              <label class="form-check-label" for="adicional1">
+                Adicional de morango
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="adicional2" id="adicional2">
+              <label class="form-check-label" for="adicional2">
+                Adicional de chocolate
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="adicional2" id="adicional2">
+              <label class="form-check-label" for="adicional2">
+                Adicional de baunilha
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="adicional2" id="adicional2">
+              <label class="form-check-label" for="adicional2">
+                Adicional de morango (fruta)
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="adicional2" id="adicional2">
+              <label class="form-check-label" for="adicional2">
+                Adicional de chocolate (barra)
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="adicional2" id="adicional2">
+              <label class="form-check-label" for="adicional2">
+                Adicional de tubete
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="adicional2" id="adicional2">
+              <label class="form-check-label" for="adicional2">
+                Adicional de calda de chocolate
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="adicional2" id="adicional2">
+              <label class="form-check-label" for="adicional2">
+                Adicional de calda de morango
+              </label>
+            </div>
+          </form>
+          <script>
+            // Função para processar o formulário quando o botão "Enviar Pedido" é clicado
+            function enviarPedido() {
+              // Array para armazenar as opções selecionadas
+              var opcoesSelecionadas = [];
+          
+              // Selecionar todos os elementos checkbox com a classe "form-check-input"
+              var checkboxes = document.querySelectorAll('.form-check-input');
+          
+              // Loop através de cada checkbox
+              checkboxes.forEach(function (checkbox) {
+                if (checkbox.checked) {
+                  // Se estiver marcado, adicione o valor (adicional) ao array
+                  opcoesSelecionadas.push(checkbox.value);
+                }
+              });
+            }
+          </script>
+          <form action="carrinhosorvete.html">
+            <button type="button" class="btn btn-primary btn-enviar" onclick="enviarPedido()">Enviar Pedido</button>
+          </form>      
+        </div>      
+      </div>
+    </div>
+  </div>     
 
         
 
