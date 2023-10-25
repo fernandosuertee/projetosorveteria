@@ -10,11 +10,11 @@
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 </head>
-<body >
+<body  style="background-color: #f577b6;">
    
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container">
+<div class="container" width="100%" height="100%">
 	<div class="row">
 		<div class="col-12" >
 			<div class="panel panel-info">
@@ -25,7 +25,7 @@
 								<h5><span class="glyphicon glyphicon-shopping-cart"></span> paladar gelado</h5>
 							</div>
 							<div class="col-xs-6">
-								<a class="btn bg-cor-linha  btn-sm btn-block" href="cardapio/cardapio.html">
+								<a class="btn bg-cor-linha  btn-sm btn-block" href="cardapio.html">
 									<span class="glyphicon glyphicon-share-alt"></span> adcionar mais produtos
 								</a>
 							</div>
@@ -82,7 +82,7 @@
 					
 							</div>
 							<div class="col-xs-3">
-								<a class="btn btn-default btn-sm btn-block" style="background-color: #f577b6;" href="cardapio/cardapio.html">
+								<a class="btn btn-default btn-sm btn-block" style="background-color: #f577b6;" href="/cardapio/cardapio.html">
 									personalizar produto
 								</a>
 							</div>
@@ -96,13 +96,19 @@
 							<h6 class="text-center"></h6>
 						</div>
 						<div class="col-xs-3">
-							<a class="btn btn-success btn-block" href="tiposdepagamento.html">
-								pagar
-								 
-							</a>
+							<form action="tiposdepagamento.html">
+								<button type= "submit" class="btn btn-success btn-block"> pagar</button>
+							</form>
+						 
+
+
+
+
+
+
 						</div>
 						<div class="col-xs-9">
-							<a href="inicio/home.html" class="btn btn-danger btn-block" href="inicio/home.html">
+							<a type="button" class="btn btn-danger btn-block" href="/inicio/home.html">
 								cancelar pedido
 							</a>
 						</div>
@@ -112,5 +118,60 @@
 		</div>
 	</div>
 </div>
+
+
+<script>
+
+
+
+// Certifique-se de que o DOM foi carregado antes de tentar adicionar um listener
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // Seleciona o botão pelo seu ID e adiciona um evento de clique
+    document.getElementById("botaoPagar").addEventListener("click", function(event) {
+        
+     
+    });
+
+});
+
+
+ // Atualiza o subtotal e o total geral do carrinho
+ function updateTotals() {
+        let total = 0;
+        let products = document.querySelectorAll('.product-row');
+
+        products.forEach(product => {
+            let quantity = parseFloat(product.querySelector('.product-quantity').value);
+            let price = parseFloat(product.querySelector('.product-quantity').getAttribute('data-price'));
+            
+            let subtotal = quantity * price;
+            product.querySelector('.product-subtotal').textContent = subtotal.toFixed(2);
+            
+            total += subtotal;
+        });
+
+        document.querySelector('.total-value').textContent = total.toFixed(2);
+    }
+
+    // Adiciona event listeners a cada campo de quantidade
+    document.querySelectorAll('.product-quantity').forEach(input => {
+        input.addEventListener('input', updateTotals);
+    });
+
+    // Chama a função inicialmente para garantir que os totais estão corretos
+    updateTotals();
+
+
+
+
+
+
+
+</script>
+
+
+
+
 </body>
 </html>
